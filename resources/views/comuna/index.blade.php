@@ -15,14 +15,15 @@
   <div class="container">
 
     <h1>Listado de Comunas</h1>
+    <a href="{{ route('comunas.create') }}" class="btn btn-success">ADICIONAR COMUNA</a>
 
     <table class="table">
   <thead>
     <tr>
-      <th scope="col">Codigo</th>
-      <th scope="col">Comuna</th>
-      <th scope="col">Municipio</th>
-      <th scope="col">Accion</th>
+      <th scope="col">CODIGO</th>
+      <th scope="col">COMUNA</th>
+      <th scope="col">MUNICIPIO</th>
+      <th scope="col">ACCION</th>
     </tr>
   </thead>
   <tbody>
