@@ -83,5 +83,14 @@ class ComunaController extends Controller
     public function destroy(string $id)
     {
         //
+        $comuna = Comuna::find($id);
+        $comuna->delete();
+
+        $comunas = DB::table('tb_comunas')
+        ->join('tb_municipios', 'tb_comunas.muni_codi', '=', 'tb_municipios.muni_codi')
+        ->select('tb_comunas.*', 'tb_municipios.muni_nomb')
+        ->get();
+
+        return view('comuna.index', ['comunas' => $comunas]);
     }
 }
