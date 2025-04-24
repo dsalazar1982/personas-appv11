@@ -27,6 +27,11 @@ class MunicipioController extends Controller
     public function create()
     {
         //
+        $departamentos = DB::table('tb_departamentos')
+        ->orderBy('depa_nomb')
+        ->get();
+
+        return view('municipio.new', ['departamentos' => $departamentos]);
     }
 
     /**
@@ -35,6 +40,17 @@ class MunicipioController extends Controller
     public function store(Request $request)
     {
         //
+        $municipio = new Municipio();
+        $municipio->muni_nomb = $request->municipio;
+        $municipio->depa_codi = $request->departamento;
+        $municipio->save();
+
+        $municipios = DB::table('tb_municipios')
+        ->join('tb_departamentos', 'tb_municipios.depa_codi', '=', 'tb_departamentos.depa_codi')
+        ->select('tb_municipios.*', 'tb_departamentos.depa_nomb')
+        ->get();
+
+        return view('municipio.edit', ['municipios' => $municipios]);
     }
 
     /**
@@ -51,6 +67,12 @@ class MunicipioController extends Controller
     public function edit(string $id)
     {
         //
+        $municipio = Municipio::find($id);
+        $departamentos = DB::table('tb_departamentos')
+        ->orderBy('depa_nomb')
+        ->get();
+
+        return view('municipio.edit', ['municipio' => $municipio, 'departamentos' => $departamentos]);
     }
 
     /**
@@ -59,6 +81,17 @@ class MunicipioController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $municipio = Municipio::find($id);
+
+        $municipio->muni_nomb = $request->municipio;
+        $municipio->depa_codi = $request->departamento;
+        $municipio->save();
+
+        $municipios = DB::table('tb_municipios')
+        ->join('tb_departamentos', 'tb_municipios.depa_codi', '=', 'tb_departamentos.depa_codi')
+        ->get();
+
+        return view('municipio.index', ['municipios' => $municipios]);
     }
 
     /**
@@ -67,5 +100,14 @@ class MunicipioController extends Controller
     public function destroy(string $id)
     {
         //
+        $municipio = Municipio::find($id);
+        $municipio->delete();
+
+        $municipios = DB::table('tb_municipios')
+        ->join('tb_departamentos', 'tb_municipios.depa_codi', '=', 'tb_departamentos.depa_codi')
+        ->select('tb_municipios.*', 'tb_departamentos.depa_nomb')
+        ->get();
+
+        return view('municipio.index', ['municipios' => $municipios]);
     }
 }
