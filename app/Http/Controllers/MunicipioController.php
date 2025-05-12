@@ -50,7 +50,7 @@ class MunicipioController extends Controller
         ->select('tb_municipios.*', 'tb_departamentos.depa_nomb')
         ->get();
 
-        return view('municipio.edit', ['municipios' => $municipios]);
+        return view('municipio.index', ['municipios' => $municipios]);
     }
 
     /**
