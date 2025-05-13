@@ -16,6 +16,7 @@
 
     <h1>Listado de Comunas</h1>
     <a href="{{ route('comunas.create') }}" class="btn btn-success">ADICIONAR COMUNA</a>
+    <a href="{{ route('home') }}" class="btn btn-success">REGRESAR AL INICIO</a>
 
     <table class="table">
   <thead>

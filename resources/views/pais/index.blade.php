@@ -16,6 +16,7 @@
 
     <h1>Listado de Paises</h1>
     <a href="{{ route('paises.create') }}" class="btn btn-success">ADICIONAR PAIS</a>
+    <a href="{{ route('home') }}" class="btn btn-success">REGRESAR AL INICIO</a>
 
     <table class="table">
   <thead>

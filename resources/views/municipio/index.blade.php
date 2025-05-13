@@ -16,6 +16,7 @@
 
     <h1>Listado de Municipios</h1>
     <a href="{{ route('municipios.create') }}" class="btn btn-success">ADICIONAR MUNICIPIO</a>
+    <a href="{{ route('home') }}" class="btn btn-success">REGRESAR AL INICIO</a>
 
     <table class="table">
   <thead>

@@ -16,6 +16,7 @@
 
     <h1>Listado de Departamentos</h1>
     <a href="{{ route('departamentos.create') }}" class="btn btn-success">ADICIONAR DEPARTAMENTO</a>
+    <a href="{{ route('home') }}" class="btn btn-success">REGRESAR AL INICIO</a>
 
     <table class="table">
   <thead>
